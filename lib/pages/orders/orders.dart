@@ -7,6 +7,9 @@ import '../analytics/analytics.dart';
 import '../customersupport/customersupport.dart';
 import '../../homepage.dart';
 import '../inventory/inventory.dart';
+import '../orders/order_details_dispatched.dart';
+import '../orders/order_details_delivered.dart';
+import '../orders/order_details_cancelled.dart';
 
 class OrdersPage extends StatelessWidget {
   void _showProfileOverlay(BuildContext context) {
@@ -111,616 +114,687 @@ class OrdersPage extends StatelessWidget {
                       ),
                     ),
                     // Order 1
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: 15.0, right: 15.0, bottom: 15.0),
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: textColor,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.local_shipping, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order Dispatched',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: mainColor),
-                                      ),
-                                      Text(
-                                        '09/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward, color: textColor),
-                            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OrderDispatchedDetailsPage(), // Replace this with your Order Details page class name
                           ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.confirmation_number,
-                                      color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '#A45192',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.date_range, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Estimated Delivery',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '13/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.0, right: 15.0, bottom: 15.0),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: textColor,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.local_shipping,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order Dispatched',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: mainColor),
+                                        ),
+                                        Text(
+                                          '09/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward, color: textColor),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.confirmation_number,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '#A45192',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.date_range, color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Estimated Delivery',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '13/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: 15.0, right: 15.0, bottom: 15.0),
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: textColor,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.local_shipping, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: successColor),
-                                      ),
-                                      Text(
-                                        '05/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward, color: textColor),
-                            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OrderDeliveredDetailsPage(), // Replace this with your Order Details page class name
                           ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.confirmation_number,
-                                      color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '#A33209',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.date_range, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered On',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '08/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.0, right: 15.0, bottom: 15.0),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: textColor,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.local_shipping,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: successColor),
+                                        ),
+                                        Text(
+                                          '05/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward, color: textColor),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.confirmation_number,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '#A33209',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.date_range, color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered On',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '08/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: 15.0, right: 15.0, bottom: 15.0),
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: textColor, // <-- Replaced with variable
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OrderDeliveredDetailsPage(), // Replace this with your Order Details page class name
+                          ),
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.0, right: 15.0, bottom: 15.0),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: textColor, // <-- Replaced with variable
+                          ),
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.local_shipping,
-                                      color:
-                                          textColor), // <-- Replaced with variable
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: successColor),
-                                      ),
-                                      Text(
-                                        '01/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                                textColor), // <-- Replaced with variable
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward,
-                                  color:
-                                      textColor), // <-- Replaced with variable
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.confirmation_number,
-                                      color:
-                                          textColor), // <-- Replaced with variable
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                                textColor), // <-- Replaced with variable
-                                      ),
-                                      Text(
-                                        '#A30412',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                                textColor), // <-- Replaced with variable
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.date_range,
-                                      color:
-                                          textColor), // <-- Replaced with variable
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered On',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                                textColor), // <-- Replaced with variable
-                                      ),
-                                      Text(
-                                        '03/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color:
-                                                textColor), // <-- Replaced with variable
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.local_shipping,
+                                        color:
+                                            textColor), // <-- Replaced with variable
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: successColor),
+                                        ),
+                                        Text(
+                                          '01/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  textColor), // <-- Replaced with variable
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward,
+                                    color:
+                                        textColor), // <-- Replaced with variable
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.confirmation_number,
+                                        color:
+                                            textColor), // <-- Replaced with variable
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  textColor), // <-- Replaced with variable
+                                        ),
+                                        Text(
+                                          '#A30412',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  textColor), // <-- Replaced with variable
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.date_range,
+                                        color:
+                                            textColor), // <-- Replaced with variable
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered On',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  textColor), // <-- Replaced with variable
+                                        ),
+                                        Text(
+                                          '03/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  textColor), // <-- Replaced with variable
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: 15.0, right: 15.0, bottom: 15.0),
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: textColor,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.local_shipping, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Cancelled',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: Color(0XFFFF0000)),
-                                      ),
-                                      Text(
-                                        '28/09/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward, color: textColor),
-                            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OrderCancelledDetailsPage(), // Replace this with your Order Details page class name
                           ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.confirmation_number,
-                                      color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '#A29287',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.date_range, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Estimated Delivery',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '03/10/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.0, right: 15.0, bottom: 15.0),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: textColor,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.local_shipping,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Cancelled',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: Color(0XFFFF0000)),
+                                        ),
+                                        Text(
+                                          '28/09/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward, color: textColor),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.confirmation_number,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '#A29287',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.date_range, color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Estimated Delivery',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '03/10/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: 15.0, right: 15.0, bottom: 15.0),
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: textColor,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.local_shipping, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: successColor),
-                                      ),
-                                      Text(
-                                        '20/09/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward, color: textColor),
-                            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OrderDeliveredDetailsPage(), // Replace this with your Order Details page class name
                           ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.confirmation_number,
-                                      color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '#A25915',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.date_range, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered On',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '26/09/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.0, right: 15.0, bottom: 15.0),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: textColor,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.local_shipping,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: successColor),
+                                        ),
+                                        Text(
+                                          '20/09/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward, color: textColor),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.confirmation_number,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '#A25915',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.date_range, color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered On',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '26/09/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: 15.0, right: 15.0, bottom: 15.0),
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: textColor,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.local_shipping, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: successColor),
-                                      ),
-                                      Text(
-                                        '16/09/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Icon(Icons.arrow_forward, color: textColor),
-                            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                OrderDeliveredDetailsPage(), // Replace this with your Order Details page class name
                           ),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.confirmation_number,
-                                      color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '#A23894',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.date_range, color: textColor),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Delivered On',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                      Text(
-                                        '18/09/2023',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: textColor),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
+                        );
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            left: 15.0, right: 15.0, bottom: 15.0),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: textColor,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.local_shipping,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: successColor),
+                                        ),
+                                        Text(
+                                          '16/09/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(Icons.arrow_forward, color: textColor),
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.confirmation_number,
+                                        color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Order',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '#A23894',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.date_range, color: textColor),
+                                    SizedBox(width: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Delivered On',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                        Text(
+                                          '18/09/2023',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              color: textColor),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
