@@ -51,6 +51,643 @@ class SupportPage extends StatelessWidget {
                         color: Color(0xFFF6C90E),
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 10.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          isDense: true, // Added this line to reduce the height
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10), // Adjust padding
+                          fillColor: Color(
+                              0xFFEEEEEE), // Set the fill color of the TextField
+                          filled: true,
+                          suffixIcon:
+                              Icon(Icons.search), // Moved the icon to the right
+                          hintText: 'Search complaints',
+                          hintStyle: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize:
+                                12, // Set the font family for the hint text
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 15.0),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint ID',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '#A03233',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.date_range,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint Date',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '13/10/2023',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.warning_amber_rounded,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Open',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFFF0000)),
+                                      ),
+                                      Text(
+                                        'Defective Product: Order #123456',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0XFFEEEEEE)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 15.0),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint ID',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '#A45192',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.date_range,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint Date',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '10/10/2023',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.warning_amber_rounded,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Processing',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFF6C90E)),
+                                      ),
+                                      Text(
+                                        'Defective Product: Order #123456',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0XFFEEEEEE)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 15.0),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint ID',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '#A21321',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.date_range,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint Date',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '09/10/2023',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.warning_amber_rounded,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Closed',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFF00FF00)),
+                                      ),
+                                      Text(
+                                        'Defective Product: Order #123456',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0XFFEEEEEE)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 15.0),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint ID',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '#A32003',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.date_range,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint Date',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '07/10/2023',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.warning_amber_rounded,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Closed',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFF00FF00)),
+                                      ),
+                                      Text(
+                                        'Defective Product: Order #123456',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0XFFEEEEEE)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 15.0),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint ID',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '#A62614',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.date_range,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint Date',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '06/10/2023',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.warning_amber_rounded,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Closed',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFF00FF00)),
+                                      ),
+                                      Text(
+                                        'Defective Product: Order #123456',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0XFFEEEEEE)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 15.0, right: 15.0, bottom: 15.0),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint ID',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '#A56165',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.date_range,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Complaint Date',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0X7FEEEEEE)),
+                                      ),
+                                      Text(
+                                        '01/10/2023',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.warning_amber_rounded,
+                                      color: Color(0xFFEEEEEE)),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Closed',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFF00FF00)),
+                                      ),
+                                      Text(
+                                        'Defective Product: Order #123456',
+                                        style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Color(0XFFEEEEEE)),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Icon(Icons.arrow_forward,
+                                  color: Color(0XFFEEEEEE)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
