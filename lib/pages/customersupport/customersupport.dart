@@ -11,39 +11,51 @@ class SupportPage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color(0xFF252C33),
-        body: Column(
-          children: [
-            // Fixed Section: Wave Image, User Name, and Profile Picture
-            Stack(
-              children: [
-                Image.asset(
-                  'assets/images/wave.png',
-                  fit: BoxFit.cover,
-                ),
-                Positioned(
-                  top: 20,
-                  right: 15,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/profile.jpg'),
-                    radius: 30,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/wave.png',
+                    fit: BoxFit.cover,
                   ),
-                ),
-                Positioned(
-                  top: 30,
-                  left: 15,
-                  child: Text(
-                    'Customer Support',
-                    style: TextStyle(
-                      color: Color(0xFF252C33),
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
+                  Positioned(
+                    top: 20,
+                    right: 15,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      radius: 30,
                     ),
                   ),
+                  Positioned(
+                    top: 20,
+                    left: 15,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/logo.png'),
+                      radius: 30,
+                    ),
+                  ),
+                ],
+              ),
+              SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Customer Support',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Color(0xFFF6C90E),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: _buildBottomNavigationBar(context),
       ),
