@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:provider/provider.dart';
+import '../../dark_mode_provider.dart';
 
 import '../analytics/analytics.dart';
 import '../customersupport/customersupport.dart';
@@ -780,6 +782,19 @@ class ProfileOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkModeProvider = Provider.of<DarkModeProvider>(
+        context); // <-- Access the DarkModeProvider
+
+    // Conditional colors based on dark mode
+    Color mainColor =
+        darkModeProvider.isDarkMode ? Color(0xFFF6C90E) : Color(0xFFB79A20);
+    Color backgroundColor =
+        darkModeProvider.isDarkMode ? Color(0xFF252C33) : Color(0xFFEEEEEE);
+    Color textColor =
+        darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+    Color switchColor =
+        darkModeProvider.isDarkMode ? Colors.white : Colors.black;
+
     return Stack(
       children: [
         // Semi-transparent background
@@ -797,30 +812,26 @@ class ProfileOverlay extends StatelessWidget {
           right: 20,
           top: 100,
           child: Material(
-            // <-- Added Material widget here
-            type: MaterialType.transparency, // Makes it transparent
+            type: MaterialType.transparency,
             child: Container(
               decoration: BoxDecoration(
-                color: Color(0xFF252C33),
+                color: backgroundColor, // <-- Conditional color
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Color(0xFFEEEEEE)),
+                border: Border.all(color: textColor), // <-- Conditional color
               ),
               child: Stack(
                 children: [
-                  // Rectangle at the top
                   Column(
                     children: [
                       Container(
-                        height: 90, // 2/5 of overlay height
+                        height: 90,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF6C90E),
+                          color: mainColor,
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10),
                           ),
                         ),
                       ),
-                      // Profile Image
-                      // Username and Edit Icon
                       SizedBox(height: 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -828,7 +839,7 @@ class ProfileOverlay extends StatelessWidget {
                           Text(
                             'Bruce Wayne',
                             style: TextStyle(
-                                color: Color(0xFFF6C90E),
+                                color: mainColor, // <-- Conditional color
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
                                 fontSize: 16),
@@ -836,22 +847,26 @@ class ProfileOverlay extends StatelessWidget {
                           SizedBox(width: 5),
                           Icon(
                             Icons.edit,
-                            color: Color(0xFFF6C90E),
+                            color: mainColor, // <-- Conditional color
                           ),
                         ],
                       ),
-                      // Other Options
-                      _buildOption('Notifications', Icons.notifications),
-                      _buildOption('Dark Mode', Icons.dark_mode),
+                      _buildOption(
+                          'Notifications',
+                          Icons.notifications,
+                          context,
+                          switchColor), // <-- Added context and switchColor
+                      _buildOption('Dark Mode', Icons.dark_mode, context,
+                          switchColor), // <-- Added context and switchColor
                       ListTile(
                         leading: Icon(
                           Icons.language,
-                          color: Color(0xFFEEEEEE),
+                          color: textColor, // <-- Conditional color
                         ),
                         title: Text(
                           'Language',
                           style: TextStyle(
-                            color: Color(0xFFEEEEEE),
+                            color: textColor, // <-- Conditional color
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -859,23 +874,22 @@ class ProfileOverlay extends StatelessWidget {
                       ListTile(
                         leading: Icon(
                           Icons.help,
-                          color: Color(0xFFEEEEEE),
+                          color: textColor, // <-- Conditional color
                         ),
                         title: Text(
                           'Help',
                           style: TextStyle(
-                            color: Color(0xFFEEEEEE),
+                            color: textColor, // <-- Conditional color
                             fontFamily: 'Poppins',
                           ),
                         ),
                       ),
-                      // Sign Out
                       TextButton(
                         onPressed: () {},
                         child: Text(
                           'Sign Out',
                           style: TextStyle(
-                            color: Color(0xFFEEEEEE),
+                            color: textColor, // <-- Conditional color
                             fontFamily: 'Poppins',
                           ),
                         ),
@@ -899,22 +913,30 @@ class ProfileOverlay extends StatelessWidget {
     );
   }
 
-  Widget _buildOption(String text, IconData icon) {
+  Widget _buildOption(
+      String text, IconData icon, BuildContext context, Color switchColor) {
+    final darkModeProvider =
+        Provider.of<DarkModeProvider>(context, listen: false);
+
     return ListTile(
       leading: Icon(
         icon,
-        color: Color(0xFFEEEEEE),
+        color: switchColor, // <-- Conditional color
       ),
       title: Text(
         text,
         style: TextStyle(
-          color: Color(0xFFEEEEEE),
+          color: switchColor, // <-- Conditional color
           fontFamily: 'Poppins',
         ),
       ),
       trailing: Switch(
-        value: true,
-        onChanged: (bool value) {},
+        value: text == 'Dark Mode' ? darkModeProvider.isDarkMode : true,
+        onChanged: (bool value) {
+          if (text == 'Dark Mode') {
+            darkModeProvider.toggleDarkMode();
+          }
+        },
       ),
     );
   }

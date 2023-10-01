@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'pages/login/login_page.dart';
+import 'package:provider/provider.dart';
+import 'dark_mode_provider.dart'; // Import the file you just created
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => DarkModeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
