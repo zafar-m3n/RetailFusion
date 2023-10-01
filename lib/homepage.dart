@@ -26,9 +26,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkModeProvider = Provider.of<DarkModeProvider>(
+        context); // <-- Access the DarkModeProvider
+
+    // Conditional colors based on dark mode
+    Color mainColor =
+        darkModeProvider.isDarkMode ? Color(0xFFF6C90E) : Color(0xFFB79A20);
+    Color backgroundColor =
+        darkModeProvider.isDarkMode ? Color(0xFF252C33) : Color(0xFFEEEEEE);
+    Color textColor =
+        darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF252C33),
+        backgroundColor: backgroundColor,
         body: Column(
           children: [
             // Fixed Section: Wave Image, User Name, and Profile Picture
@@ -70,11 +81,11 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    _buildStatsSection(),
-                    _buildRecentActivitiesSection(),
-                    _buildQuickActionsSection(),
-                    _buildSalesRevenueSection(),
-                    _buildRevenueBreakdownSection(),
+                    _buildStatsSection(textColor, mainColor),
+                    _buildRecentActivitiesSection(textColor),
+                    _buildQuickActionsSection(textColor),
+                    _buildSalesRevenueSection(textColor),
+                    _buildRevenueBreakdownSection(textColor),
                   ],
                 ),
               ),
@@ -86,14 +97,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildStatsSection() {
+  Widget _buildStatsSection(Color textColor, Color mainColor) {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(15),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         // color: Color(0x7FEEEEEE),
-        border: Border.all(color: Color(0xFFEEEEEE)),
+        border: Border.all(color: textColor),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Wrap(
@@ -101,27 +112,33 @@ class HomePage extends StatelessWidget {
         spacing: 8.0,
         runSpacing: 4.0,
         children: [
-          _buildStatItem(Icons.people, '1,365', 'Total Customers'),
-          _buildStatItem(Icons.shopping_cart, '21,332', 'Total Orders'),
-          _buildStatItem(Icons.attach_money, '\$268,193', 'Total Revenue'),
+          _buildStatItem(
+              Icons.people, '1,365', 'Total Customers', textColor, mainColor),
+          _buildStatItem(Icons.shopping_cart, '21,332', 'Total Orders',
+              textColor, mainColor),
+          _buildStatItem(Icons.attach_money, '\$268,193', 'Total Revenue',
+              textColor, mainColor),
         ],
       ),
     );
   }
 
-  Widget _buildStatItem(IconData icon, String value, String label) {
+  Widget _buildStatItem(IconData icon, String value, String label,
+      Color textColor, Color mainColor) {
     return Column(
       children: [
-        Icon(icon, color: Color(0xFFF6C90E)),
+        Icon(icon, color: mainColor),
         Text(value,
-            style: TextStyle(color: Color(0xFFF6C90E), fontFamily: 'Poppins')),
-        Text(label,
-            style: TextStyle(color: Color(0xFFEEEEEE), fontFamily: 'Poppins')),
+            style: TextStyle(
+                color: mainColor,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.bold)),
+        Text(label, style: TextStyle(color: textColor, fontFamily: 'Poppins')),
       ],
     );
   }
 
-  Widget _buildRecentActivitiesSection() {
+  Widget _buildRecentActivitiesSection(Color textColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -132,7 +149,7 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFFEEEEEE),
+              color: textColor,
               fontFamily: 'Poppins',
             ),
           ),
@@ -143,31 +160,31 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
             // color: Color(0x7FEEEEEE),
-            border: Border.all(color: Color(0xFFEEEEEE)),
+            border: Border.all(color: textColor),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildActivityItem(
-                  'Orders', '09/10/2023', 'John Doe order dispatched'),
+              _buildActivityItem('Orders', '09/10/2023',
+                  'John Doe order dispatched', textColor),
               Divider(
-                color: Color(0xFFEEEEEE),
+                color: textColor,
               ),
               _buildActivityItem(
-                  'Inventory', '08/10/2023', 'Inventory restocked'),
+                  'Inventory', '08/10/2023', 'Inventory restocked', textColor),
               Divider(
-                color: Color(0xFFEEEEEE),
+                color: textColor,
               ),
-              _buildActivityItem(
-                  'Customer Support', '07/10/2023', 'Jane Doe order refund'),
+              _buildActivityItem('Customer Support', '07/10/2023',
+                  'Jane Doe order refund', textColor),
               Divider(
-                color: Color(0xFFEEEEEE),
+                color: textColor,
               ),
-              _buildActivityItem(
-                  'Orders', '07/10/2023', 'John Doe order cancelled'),
+              _buildActivityItem('Orders', '07/10/2023',
+                  'John Doe order cancelled', textColor),
               Divider(
-                color: Color(0xFFEEEEEE),
+                color: textColor,
               ),
             ],
           ),
@@ -176,7 +193,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildActivityItem(String type, String date, String description) {
+  Widget _buildActivityItem(
+      String type, String date, String description, Color textColor) {
     return RichText(
       text: TextSpan(
         children: [
@@ -185,14 +203,14 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.bold,
-              color: Color(0xFFEEEEEE),
+              color: textColor,
             ),
           ),
           TextSpan(
             text: '$date\n$description',
             style: TextStyle(
               fontFamily: 'Poppins',
-              color: Color(0xFFEEEEEE),
+              color: textColor,
             ),
           ),
         ],
@@ -200,7 +218,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickActionsSection() {
+  Widget _buildQuickActionsSection(Color textColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -211,7 +229,7 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFFEEEEEE),
+              color: textColor,
               fontFamily: 'Poppins',
             ),
           ),
@@ -258,7 +276,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSalesRevenueSection() {
+  Widget _buildSalesRevenueSection(Color textColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -269,7 +287,7 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFFEEEEEE),
+              color: textColor,
               fontFamily: 'Poppins',
             ),
           ),
@@ -278,7 +296,7 @@ class HomePage extends StatelessWidget {
           width: double.infinity,
           margin: EdgeInsets.all(15),
           decoration: BoxDecoration(
-            border: Border.all(color: Color(0xFFEEEEEE)),
+            border: Border.all(color: textColor),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Center(
@@ -296,7 +314,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildRevenueBreakdownSection() {
+  Widget _buildRevenueBreakdownSection(Color textColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -307,7 +325,7 @@ class HomePage extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFFEEEEEE),
+              color: textColor,
               fontFamily: 'Poppins',
             ),
           ),
@@ -315,9 +333,8 @@ class HomePage extends StatelessWidget {
         Container(
           width: double.infinity,
           margin: EdgeInsets.all(15),
-          padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
-            border: Border.all(color: Color(0xFFEEEEEE)),
+            border: Border.all(color: textColor),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Center(
@@ -433,7 +450,7 @@ class ProfileOverlay extends StatelessWidget {
                       Container(
                         height: 90,
                         decoration: BoxDecoration(
-                          color: mainColor,
+                          color: Color(0xFFF6C90E),
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10),
                           ),

@@ -26,9 +26,22 @@ class InventoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkModeProvider = Provider.of<DarkModeProvider>(
+        context); // <-- Access the DarkModeProvider
+
+    // Conditional colors based on dark mode
+    Color mainColor =
+        darkModeProvider.isDarkMode ? Color(0xFFF6C90E) : Color(0xFFB79A20);
+    Color backgroundColor =
+        darkModeProvider.isDarkMode ? Color(0xFF252C33) : Color(0xFFEEEEEE);
+    Color textColor =
+        darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+    Color successColor =
+        darkModeProvider.isDarkMode ? Color(0xFF00FF00) : Color(0xFF006600);
+
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF252C33),
+        backgroundColor: backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -69,7 +82,7 @@ class InventoryPage extends StatelessWidget {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Color(0xFFF6C90E),
+                        color: mainColor,
                       ),
                     ),
                     // Search Bar
@@ -104,7 +117,7 @@ class InventoryPage extends StatelessWidget {
                           horizontal: 15.0, vertical: 10.0),
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFEEEEEE)),
+                        border: Border.all(color: textColor),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -126,20 +139,19 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Row(
                                 children: List.generate(5, (index) {
                                   if (index < 4) {
-                                    return Icon(Icons.star,
-                                        color: Color(0xFFF6C90E));
+                                    return Icon(Icons.star, color: mainColor);
                                   } else if (index == 4) {
                                     return Icon(Icons.star_half,
-                                        color: Color(0xFFF6C90E));
+                                        color: mainColor);
                                   }
                                   return Icon(Icons.star_border,
-                                      color: Color(0xFFF6C90E));
+                                      color: mainColor);
                                 }),
                               ),
                               Text(
@@ -147,7 +159,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Text(
@@ -155,7 +167,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Colors.green,
+                                  color: successColor,
                                 ),
                               ),
                             ],
@@ -168,7 +180,7 @@ class InventoryPage extends StatelessWidget {
                           horizontal: 15.0, vertical: 10.0),
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFEEEEEE)),
+                        border: Border.all(color: textColor),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -190,21 +202,20 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Row(
                                   children: List.generate(
                                 5,
-                                (index) =>
-                                    Icon(Icons.star, color: Color(0xFFF6C90E)),
+                                (index) => Icon(Icons.star, color: mainColor),
                               )),
                               Text(
                                 '\$180.00',
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Text(
@@ -212,7 +223,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Colors.green,
+                                  color: successColor,
                                 ),
                               ),
                             ],
@@ -225,7 +236,7 @@ class InventoryPage extends StatelessWidget {
                           horizontal: 15.0, vertical: 10.0),
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFEEEEEE)),
+                        border: Border.all(color: textColor),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -247,17 +258,16 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Row(
                                 children: List.generate(5, (index) {
                                   if (index < 4) {
-                                    return Icon(Icons.star,
-                                        color: Color(0xFFF6C90E));
+                                    return Icon(Icons.star, color: mainColor);
                                   }
                                   return Icon(Icons.star_border,
-                                      color: Color(0xFFF6C90E));
+                                      color: mainColor);
                                 }),
                               ),
                               Text(
@@ -265,7 +275,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Text(
@@ -273,7 +283,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Colors.green,
+                                  color: successColor,
                                 ),
                               ),
                             ],
@@ -286,7 +296,7 @@ class InventoryPage extends StatelessWidget {
                           horizontal: 15.0, vertical: 10.0),
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFEEEEEE)),
+                        border: Border.all(color: textColor),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -308,20 +318,19 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Row(
                                 children: List.generate(5, (index) {
                                   if (index < 4) {
-                                    return Icon(Icons.star,
-                                        color: Color(0xFFF6C90E));
+                                    return Icon(Icons.star, color: mainColor);
                                   } else if (index == 4) {
                                     return Icon(Icons.star_half,
-                                        color: Color(0xFFF6C90E));
+                                        color: mainColor);
                                   }
                                   return Icon(Icons.star_border,
-                                      color: Color(0xFFF6C90E));
+                                      color: mainColor);
                                 }),
                               ),
                               Text(
@@ -329,7 +338,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Text(
@@ -350,7 +359,7 @@ class InventoryPage extends StatelessWidget {
                           horizontal: 15.0, vertical: 10.0),
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFEEEEEE)),
+                        border: Border.all(color: textColor),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -372,21 +381,20 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Row(
                                   children: List.generate(
                                 5,
-                                (index) =>
-                                    Icon(Icons.star, color: Color(0xFFF6C90E)),
+                                (index) => Icon(Icons.star, color: mainColor),
                               )),
                               Text(
                                 '\$120.00',
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Text(
@@ -394,7 +402,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Colors.green,
+                                  color: successColor,
                                 ),
                               ),
                             ],
@@ -407,7 +415,7 @@ class InventoryPage extends StatelessWidget {
                           horizontal: 15.0, vertical: 10.0),
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFEEEEEE)),
+                        border: Border.all(color: textColor),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Row(
@@ -429,20 +437,19 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Row(
                                 children: List.generate(5, (index) {
                                   if (index < 4) {
-                                    return Icon(Icons.star,
-                                        color: Color(0xFFF6C90E));
+                                    return Icon(Icons.star, color: mainColor);
                                   } else if (index == 4) {
                                     return Icon(Icons.star_half,
-                                        color: Color(0xFFF6C90E));
+                                        color: mainColor);
                                   }
                                   return Icon(Icons.star_border,
-                                      color: Color(0xFFF6C90E));
+                                      color: mainColor);
                                 }),
                               ),
                               Text(
@@ -450,7 +457,7 @@ class InventoryPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
-                                  color: Color(0xFFEEEEEE),
+                                  color: textColor,
                                 ),
                               ),
                               Text(
@@ -616,7 +623,7 @@ class ProfileOverlay extends StatelessWidget {
                       Container(
                         height: 90,
                         decoration: BoxDecoration(
-                          color: mainColor,
+                          color: Color(0xFFF6C90E),
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10),
                           ),

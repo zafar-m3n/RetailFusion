@@ -26,9 +26,21 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkModeProvider = Provider.of<DarkModeProvider>(
+        context); // <-- Access the DarkModeProvider
+
+    // Conditional colors based on dark mode
+    Color mainColor =
+        darkModeProvider.isDarkMode ? Color(0xFFF6C90E) : Color(0xFFB79A20);
+    Color backgroundColor =
+        darkModeProvider.isDarkMode ? Color(0xFF252C33) : Color(0xFFEEEEEE);
+    Color textColor =
+        darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+    Color successColor =
+        darkModeProvider.isDarkMode ? Color(0xFF00FF00) : Color(0xFF006600);
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF252C33),
+        backgroundColor: backgroundColor, // <-- Conditional color
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -69,7 +81,7 @@ class OrdersPage extends StatelessWidget {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Color(0xFFF6C90E),
+                        color: mainColor,
                       ),
                     ),
                     // Search Bar
@@ -105,7 +117,7 @@ class OrdersPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -116,8 +128,7 @@ class OrdersPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.local_shipping,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.local_shipping, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -127,20 +138,19 @@ class OrdersPage extends StatelessWidget {
                                         'Order Dispatched',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFF6C90E)),
+                                            color: mainColor),
                                       ),
                                       Text(
                                         '09/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                           SizedBox(height: 20),
@@ -150,7 +160,7 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.confirmation_number,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -160,13 +170,13 @@ class OrdersPage extends StatelessWidget {
                                         'Order',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A45192',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -174,8 +184,7 @@ class OrdersPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -185,13 +194,13 @@ class OrdersPage extends StatelessWidget {
                                         'Estimated Delivery',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '13/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -208,7 +217,7 @@ class OrdersPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -219,8 +228,7 @@ class OrdersPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.local_shipping,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.local_shipping, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -230,20 +238,19 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         '05/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                           SizedBox(height: 20),
@@ -253,7 +260,7 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.confirmation_number,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -263,13 +270,13 @@ class OrdersPage extends StatelessWidget {
                                         'Order',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A33209',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -277,8 +284,7 @@ class OrdersPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -288,13 +294,13 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered On',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '08/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -311,7 +317,7 @@ class OrdersPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor, // <-- Replaced with variable
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -323,7 +329,8 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.local_shipping,
-                                      color: Color(0xFFEEEEEE)),
+                                      color:
+                                          textColor), // <-- Replaced with variable
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -333,20 +340,22 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         '01/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color:
+                                                textColor), // <-- Replaced with variable
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
                               Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                                  color:
+                                      textColor), // <-- Replaced with variable
                             ],
                           ),
                           SizedBox(height: 20),
@@ -356,7 +365,8 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.confirmation_number,
-                                      color: Color(0xFFEEEEEE)),
+                                      color:
+                                          textColor), // <-- Replaced with variable
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -366,13 +376,15 @@ class OrdersPage extends StatelessWidget {
                                         'Order',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color:
+                                                textColor), // <-- Replaced with variable
                                       ),
                                       Text(
                                         '#A30412',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color:
+                                                textColor), // <-- Replaced with variable
                                       ),
                                     ],
                                   ),
@@ -381,7 +393,8 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                      color:
+                                          textColor), // <-- Replaced with variable
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -391,20 +404,22 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered On',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color:
+                                                textColor), // <-- Replaced with variable
                                       ),
                                       Text(
                                         '03/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color:
+                                                textColor), // <-- Replaced with variable
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -414,7 +429,7 @@ class OrdersPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -425,8 +440,7 @@ class OrdersPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.local_shipping,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.local_shipping, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -442,14 +456,13 @@ class OrdersPage extends StatelessWidget {
                                         '28/09/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                           SizedBox(height: 20),
@@ -459,7 +472,7 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.confirmation_number,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -469,13 +482,13 @@ class OrdersPage extends StatelessWidget {
                                         'Order',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A29287',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -483,8 +496,7 @@ class OrdersPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -494,13 +506,13 @@ class OrdersPage extends StatelessWidget {
                                         'Estimated Delivery',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '03/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -517,7 +529,7 @@ class OrdersPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -528,8 +540,7 @@ class OrdersPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.local_shipping,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.local_shipping, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -539,20 +550,19 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         '20/09/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                           SizedBox(height: 20),
@@ -562,7 +572,7 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.confirmation_number,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -572,13 +582,13 @@ class OrdersPage extends StatelessWidget {
                                         'Order',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A25915',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -586,8 +596,7 @@ class OrdersPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -597,13 +606,13 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered On',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '26/09/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -620,7 +629,7 @@ class OrdersPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -631,8 +640,7 @@ class OrdersPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.local_shipping,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.local_shipping, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -642,20 +650,19 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         '16/09/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                           SizedBox(height: 20),
@@ -665,7 +672,7 @@ class OrdersPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.confirmation_number,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -675,13 +682,13 @@ class OrdersPage extends StatelessWidget {
                                         'Order',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A23894',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -689,8 +696,7 @@ class OrdersPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -700,13 +706,13 @@ class OrdersPage extends StatelessWidget {
                                         'Delivered On',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '18/09/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -826,7 +832,7 @@ class ProfileOverlay extends StatelessWidget {
                       Container(
                         height: 90,
                         decoration: BoxDecoration(
-                          color: mainColor,
+                          color: Color(0xFFF6C90E),
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10),
                           ),

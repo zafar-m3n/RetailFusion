@@ -26,9 +26,22 @@ class SupportPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkModeProvider = Provider.of<DarkModeProvider>(
+        context); // <-- Access the DarkModeProvider
+
+    // Conditional colors based on dark mode
+    Color mainColor =
+        darkModeProvider.isDarkMode ? Color(0xFFF6C90E) : Color(0xFFB79A20);
+    Color backgroundColor =
+        darkModeProvider.isDarkMode ? Color(0xFF252C33) : Color(0xFFEEEEEE);
+    Color textColor =
+        darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+    Color successColor =
+        darkModeProvider.isDarkMode ? Color(0xFF00FF00) : Color(0xFF006600);
+
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF252C33),
+        backgroundColor: backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -69,7 +82,7 @@ class SupportPage extends StatelessWidget {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Color(0xFFF6C90E),
+                        color: mainColor,
                       ),
                     ),
                     Padding(
@@ -103,7 +116,7 @@ class SupportPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -114,7 +127,7 @@ class SupportPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.badge, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -124,13 +137,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint ID',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A03233',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -138,8 +152,7 @@ class SupportPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -149,13 +162,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint Date',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '13/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -170,7 +184,7 @@ class SupportPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.warning_amber_rounded,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -186,14 +200,13 @@ class SupportPage extends StatelessWidget {
                                         'Defective Product: Order #123456',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                         ],
@@ -205,7 +218,7 @@ class SupportPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -216,7 +229,7 @@ class SupportPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.badge, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -226,13 +239,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint ID',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A45192',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -240,8 +254,7 @@ class SupportPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -251,13 +264,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint Date',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '10/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -272,7 +286,7 @@ class SupportPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.warning_amber_rounded,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -282,20 +296,19 @@ class SupportPage extends StatelessWidget {
                                         'Processing',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFF6C90E)),
+                                            color: mainColor),
                                       ),
                                       Text(
                                         'Defective Product: Order #123456',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                         ],
@@ -307,7 +320,7 @@ class SupportPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -318,7 +331,7 @@ class SupportPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.badge, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -328,13 +341,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint ID',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A21321',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -342,8 +356,7 @@ class SupportPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -353,13 +366,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint Date',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '09/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -374,7 +388,7 @@ class SupportPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.warning_amber_rounded,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -384,20 +398,19 @@ class SupportPage extends StatelessWidget {
                                         'Closed',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         'Defective Product: Order #123456',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                         ],
@@ -409,7 +422,7 @@ class SupportPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -420,7 +433,7 @@ class SupportPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.badge, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -430,13 +443,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint ID',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A32003',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -444,8 +458,7 @@ class SupportPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -455,13 +468,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint Date',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '07/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -476,7 +490,7 @@ class SupportPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.warning_amber_rounded,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -486,20 +500,19 @@ class SupportPage extends StatelessWidget {
                                         'Closed',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         'Defective Product: Order #123456',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                         ],
@@ -511,7 +524,7 @@ class SupportPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -522,7 +535,7 @@ class SupportPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.badge, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -532,13 +545,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint ID',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A62614',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -546,8 +560,7 @@ class SupportPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -557,13 +570,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint Date',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '06/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -578,7 +592,7 @@ class SupportPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.warning_amber_rounded,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -588,20 +602,19 @@ class SupportPage extends StatelessWidget {
                                         'Closed',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         'Defective Product: Order #123456',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                         ],
@@ -613,7 +626,7 @@ class SupportPage extends StatelessWidget {
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFEEEEEE),
+                          color: textColor,
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -624,7 +637,7 @@ class SupportPage extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.badge, color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.badge, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -634,13 +647,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint ID',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '#A56165',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -648,8 +662,7 @@ class SupportPage extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.date_range,
-                                      color: Color(0xFFEEEEEE)),
+                                  Icon(Icons.date_range, color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -659,13 +672,14 @@ class SupportPage extends StatelessWidget {
                                         'Complaint Date',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0X7FEEEEEE)),
+                                            color: textColor),
                                       ),
                                       Text(
                                         '01/10/2023',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            fontWeight: FontWeight.bold,
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
@@ -680,7 +694,7 @@ class SupportPage extends StatelessWidget {
                               Row(
                                 children: [
                                   Icon(Icons.warning_amber_rounded,
-                                      color: Color(0xFFEEEEEE)),
+                                      color: textColor),
                                   SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
@@ -690,20 +704,19 @@ class SupportPage extends StatelessWidget {
                                         'Closed',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFF00FF00)),
+                                            color: successColor),
                                       ),
                                       Text(
                                         'Defective Product: Order #123456',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
-                                            color: Color(0XFFEEEEEE)),
+                                            color: textColor),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              Icon(Icons.arrow_forward,
-                                  color: Color(0XFFEEEEEE)),
+                              Icon(Icons.arrow_forward, color: textColor),
                             ],
                           ),
                         ],
@@ -818,7 +831,7 @@ class ProfileOverlay extends StatelessWidget {
                       Container(
                         height: 90,
                         decoration: BoxDecoration(
-                          color: mainColor,
+                          color: Color(0xFFF6C90E),
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(10),
                           ),
