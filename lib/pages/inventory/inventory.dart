@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 import '../analytics/analytics.dart';
 import '../customersupport/customersupport.dart';
@@ -6,6 +7,21 @@ import '../../homepage.dart';
 import '../orders/orders.dart';
 
 class InventoryPage extends StatelessWidget {
+  void _showProfileOverlay(BuildContext context) {
+    final Completer<OverlayEntry> completer = Completer<OverlayEntry>();
+
+    OverlayEntry overlayEntry = OverlayEntry(
+      builder: (context) {
+        return ProfileOverlay(
+          onClose: () => completer.future.then((entry) => entry.remove()),
+        );
+      },
+    );
+
+    completer.complete(overlayEntry);
+    Overlay.of(context).insert(overlayEntry);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,13 +37,16 @@ class InventoryPage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   Positioned(
-                    top: 20,
-                    right: 15,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
-                      radius: 30,
-                    ),
-                  ),
+                      top: 20,
+                      right: 15,
+                      child: GestureDetector(
+                        onTap: () => _showProfileOverlay(context),
+                        child: CircleAvatar(
+                          backgroundImage:
+                              AssetImage('assets/images/profile.jpg'),
+                          radius: 30,
+                        ),
+                      )),
                   Positioned(
                     top: 20,
                     left: 15,
@@ -539,6 +558,153 @@ class InventoryPage extends StatelessWidget {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ProfileOverlay extends StatelessWidget {
+  final VoidCallback onClose;
+
+  ProfileOverlay({required this.onClose});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Semi-transparent background
+        Positioned.fill(
+          child: GestureDetector(
+            onTap: onClose,
+            child: Container(
+              color: Color(0x80252C33),
+            ),
+          ),
+        ),
+        // Overlay content
+        Positioned(
+          left: 20,
+          right: 20,
+          top: 100,
+          child: Material(
+            // <-- Added Material widget here
+            type: MaterialType.transparency, // Makes it transparent
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xFF252C33),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Color(0xFFEEEEEE)),
+              ),
+              child: Stack(
+                children: [
+                  // Rectangle at the top
+                  Column(
+                    children: [
+                      Container(
+                        height: 90, // 2/5 of overlay height
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF6C90E),
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(10),
+                          ),
+                        ),
+                      ),
+                      // Profile Image
+                      // Username and Edit Icon
+                      SizedBox(height: 50),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Bruce Wayne',
+                            style: TextStyle(
+                                color: Color(0xFFF6C90E),
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Poppins',
+                                fontSize: 16),
+                          ),
+                          SizedBox(width: 5),
+                          Icon(
+                            Icons.edit,
+                            color: Color(0xFFF6C90E),
+                          ),
+                        ],
+                      ),
+                      // Other Options
+                      _buildOption('Notifications', Icons.notifications),
+                      _buildOption('Dark Mode', Icons.dark_mode),
+                      ListTile(
+                        leading: Icon(
+                          Icons.language,
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        title: Text(
+                          'Language',
+                          style: TextStyle(
+                            color: Color(0xFFEEEEEE),
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.help,
+                          color: Color(0xFFEEEEEE),
+                        ),
+                        title: Text(
+                          'Help',
+                          style: TextStyle(
+                            color: Color(0xFFEEEEEE),
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      // Sign Out
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Sign Out',
+                          style: TextStyle(
+                            color: Color(0xFFEEEEEE),
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                    top: 45,
+                    left: 115,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      radius: 45,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildOption(String text, IconData icon) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: Color(0xFFEEEEEE),
+      ),
+      title: Text(
+        text,
+        style: TextStyle(
+          color: Color(0xFFEEEEEE),
+          fontFamily: 'Poppins',
+        ),
+      ),
+      trailing: Switch(
+        value: true,
+        onChanged: (bool value) {},
       ),
     );
   }
