@@ -7,6 +7,7 @@ import '../analytics/analytics.dart';
 import '../customersupport/customersupport.dart';
 import '../../homepage.dart';
 import '../orders/orders.dart';
+import 'add_product.dart';
 
 class InventoryPage extends StatelessWidget {
   void _showProfileOverlay(BuildContext context) {
@@ -111,7 +112,67 @@ class InventoryPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    _buildQuickActionsSection(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 15.0, vertical: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AddProductPage()));
+                                  },
+                                  child: Text(
+                                    'Add Product',
+                                    style: TextStyle(
+                                      color: Color(0xFF252C33),
+                                      fontFamily: 'Poppins',
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6C90E),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Reorder Stock',
+                                    style: TextStyle(
+                                      color: Color(0xFF252C33),
+                                      fontFamily: 'Poppins',
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6C90E),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                     Container(
                       margin: EdgeInsets.symmetric(
                           horizontal: 15.0, vertical: 10.0),
@@ -480,47 +541,6 @@ class InventoryPage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: _buildBottomNavigationBar(context),
-      ),
-    );
-  }
-
-  Widget _buildQuickActionsSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: double.infinity,
-          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildActionButton('Add Product'),
-              _buildActionButton('Reorder Stock'),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildActionButton(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Color(0xFF252C33),
-            fontFamily: 'Poppins',
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xFFF6C90E),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
       ),
     );
   }
