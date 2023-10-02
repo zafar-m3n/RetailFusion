@@ -35,8 +35,11 @@ class OrderDeliveredDetailsPage extends StatelessWidget {
         darkModeProvider.isDarkMode ? Color(0xFFF6C90E) : Color(0xFFB79A20);
     Color backgroundColor =
         darkModeProvider.isDarkMode ? Color(0xFF252C33) : Color(0xFFEEEEEE);
-    // Color textColor =
-    //     darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+    Color textColor =
+        darkModeProvider.isDarkMode ? Color(0xFFEEEEEE) : Color(0xFF252C33);
+    Color successColor =
+        darkModeProvider.isDarkMode ? Color(0xFF00FF00) : Color(0xFF006600);
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: backgroundColor, // <-- Conditional color
@@ -63,33 +66,291 @@ class OrderDeliveredDetailsPage extends StatelessWidget {
                   Positioned(
                     top: 20,
                     left: 15,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/logo.png'),
-                      radius: 30,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Color(0xFF252C33),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OrdersPage()));
+                          },
+                        ),
+                        Text(
+                          'Order Details',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Color(0xFF252C33),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
               SafeArea(
+                  child: Padding(
+                padding: EdgeInsets.all(15.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      'Order Details',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: mainColor,
+                    //UI components go here
+                    Container(
+                      decoration: BoxDecoration(
+                        color: successColor,
+                        borderRadius: BorderRadius.circular(10),
                       ),
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Text(
+                        'Delivered',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 16,
+                          color: Color(0xFF252C33),
+                        ),
+                      ),
+                    ),
+                    _buildHeading(textColor, 'Order Summary'),
+                    Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: textColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color:
+                                  textColor, // Replace with your own color (textColor)
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Order ID: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '#A45192\n'),
+                              TextSpan(
+                                  text: 'Order Date: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '09/10/2023\n'),
+                              TextSpan(
+                                  text: 'Estimated Delivery Date: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '13/10/2023\n'),
+                              TextSpan(
+                                  text: 'Delivery Address: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                  text:
+                                      '123 Elm Street, Springfield, IL 62704, United States'),
+                            ],
+                          ),
+                        )),
+                    _buildHeading(textColor, 'Customer Information'),
+                    Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: textColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color:
+                                  textColor, // Replace with your own color (textColor)
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Name:  ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: 'Elena Bennett\n'),
+                              TextSpan(
+                                  text: 'Address: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                  text:
+                                      '123 Elm Street, Springfield, IL 62704, United States\n'),
+                              TextSpan(
+                                  text: 'Phone: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '(555) 123-4567\n'),
+                              TextSpan(
+                                  text: 'Email: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: 'elenabennett@gmail.com'),
+                            ],
+                          ),
+                        )),
+                    _buildHeading(textColor, 'Order Items'),
+                    _buildOrderItemsBox(textColor),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            'Order Total',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 20,
+                              color: mainColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            '\$334.00',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 20,
+                              color: textColor,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
-              ),
+              )),
             ],
           ),
         ),
         bottomNavigationBar: _buildBottomNavigationBar(context),
+      ),
+    );
+  }
+
+  Widget _buildHeading(Color textColor, String text) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontFamily: 'Poppins',
+          fontSize: 20,
+          color: textColor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  // Dummy function for building order items box
+  // You can replace this with real data
+  Widget _buildOrderItemsBox(Color borderColor) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(color: borderColor),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Add your product image here
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/images/doughnut.png',
+                  width: 50,
+                  height: 50,
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Two Fake Doughnuts',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      color: borderColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '\$77.00',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: borderColor,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                'Qty:2',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  color: borderColor,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          // Add more rows as needed
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Add your product image here
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/images/watch.png',
+                  width: 50,
+                  height: 50,
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Cool Black Watch       ',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      color: borderColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '\$180.00',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: borderColor,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                'Qty:1',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  color: borderColor,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

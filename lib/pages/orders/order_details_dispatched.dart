@@ -61,13 +61,21 @@ class OrderDispatchedDetailsPage extends StatelessWidget {
                         ),
                       )),
                   Positioned(
-                    top: 30,
+                    top: 20,
                     left: 15,
                     child: Row(
                       children: [
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: Color(0xFF252C33),
+                        IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Color(0xFF252C33),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OrdersPage()));
+                          },
                         ),
                         Text(
                           'Order Details',
@@ -107,13 +115,139 @@ class OrderDispatchedDetailsPage extends StatelessWidget {
                       ),
                     ),
                     _buildHeading(textColor, 'Order Summary'),
-                    _buildBoxWithText(textColor,
-                        'Order ID: #A45192\nOrder Date: 09/10/2023\nEstimated Delivery Date: 13/10/2023\nDelivery Address: 123 Elm Street, Springfield, IL 62704, United States'),
+                    Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: textColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color:
+                                  textColor, // Replace with your own color (textColor)
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Order ID: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '#A45192\n'),
+                              TextSpan(
+                                  text: 'Order Date: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '09/10/2023\n'),
+                              TextSpan(
+                                  text: 'Estimated Delivery Date: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '13/10/2023\n'),
+                              TextSpan(
+                                  text: 'Delivery Address: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                  text:
+                                      '123 Elm Street, Springfield, IL 62704, United States'),
+                            ],
+                          ),
+                        )),
                     _buildHeading(textColor, 'Customer Information'),
-                    _buildBoxWithText(textColor,
-                        'Name: Elena Bennett\nAddress: 123 Elm Street, Springfield, IL 62704, United States\nPhone: (555) 123-4567\nEmail: elenabennett@gmail.com'),
+                    Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: textColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color:
+                                  textColor, // Replace with your own color (textColor)
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Name:  ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: 'Elena Bennett\n'),
+                              TextSpan(
+                                  text: 'Address: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                  text:
+                                      '123 Elm Street, Springfield, IL 62704, United States\n'),
+                              TextSpan(
+                                  text: 'Phone: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: '(555) 123-4567\n'),
+                              TextSpan(
+                                  text: 'Email: ',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              TextSpan(text: 'elenabennett@gmail.com'),
+                            ],
+                          ),
+                        )),
                     _buildHeading(textColor, 'Order Items'),
                     _buildOrderItemsBox(textColor),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            'Order Total',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 20,
+                              color: mainColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            '\$334.00',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 20,
+                              color: textColor,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Update Order Status',
+                              style: TextStyle(
+                                color: Color(0xFF252C33),
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFFF6C90E),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               )),
@@ -127,7 +261,7 @@ class OrderDispatchedDetailsPage extends StatelessWidget {
 
   Widget _buildHeading(Color textColor, String text) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
         text,
         style: TextStyle(
@@ -135,23 +269,6 @@ class OrderDispatchedDetailsPage extends StatelessWidget {
           fontSize: 20,
           color: textColor,
           fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBoxWithText(Color borderColor, String text) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        border: Border.all(color: borderColor),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Text(
-        'Order ID: #A45192\nOrder Date: 09/10/2023\nEstimated Delivery Date: 13/10/2023\nDelivery Address: 123 Elm Street, Springfield, IL 62704, United States',
-        style: TextStyle(
-          fontFamily: 'Poppins',
-          color: borderColor,
         ),
       ),
     );
@@ -202,14 +319,7 @@ class OrderDispatchedDetailsPage extends StatelessWidget {
                 ],
               ),
               Text(
-                'Quantity',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: borderColor,
-                ),
-              ),
-              Text(
-                'Total Price',
+                'Qty:2',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   color: borderColor,
@@ -217,7 +327,50 @@ class OrderDispatchedDetailsPage extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 10),
           // Add more rows as needed
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Add your product image here
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/images/watch.png',
+                  width: 50,
+                  height: 50,
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Cool Black Watch       ',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      color: borderColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '\$180.00',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: borderColor,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                'Qty:1',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  color: borderColor,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
